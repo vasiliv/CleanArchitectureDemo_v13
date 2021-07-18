@@ -1,0 +1,91 @@
+﻿@model CleanArchitecture.Application.ViewModels.PersonViewModel
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Index</h1>
+
+<p>
+    <a asp-action="Create">Create New</a>
+</p>
+<form method="get" asp-action="Index">
+    <p>
+        @*<input type="search" placeholder="Enter search phrase..." value="@ViewData["PersonSearch"]" name="personSearch" />
+        <input type="submit" value="Search" class="btn btn-primary" />*@
+        <input type="text" name="personSearch" />
+        <input type="submit" value="Filter" />
+    </p>
+</form>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Person.ImageFile)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Person.FirstNameGeorgian)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Person.FirstNameLatin)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Person.SecondNameGeorgian)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Person.SecondNameLatin)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Person.IdentityNumber)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Person.BornDate)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Person.Address)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model.Persons) {
+        <tr>
+            <td>
+                <!---Show the image-->
+                <!--Make Image clickable-->
+                <a href="@("Images/"+item.ImageName)">
+                    <img src="@("~/Images/"+item.ImageName)" asp-append-version="true" width="50" height="50" />
+                </a>
+
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.FirstNameGeorgian)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.FirstNameLatin)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.SecondNameGeorgian)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.SecondNameLatin)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.IdentityNumber)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.BornDate)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Address)
+            </td>
+            <td>
+                <a asp-action="Edit" asp-route-id="@item.Id">Edit</a> |
+                <a asp-action="Details" asp-route-id="@item.Id">Details</a> |
+                <a asp-action="Delete" asp-route-id="@item.Id">Delete</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

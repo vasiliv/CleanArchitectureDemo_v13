@@ -1,0 +1,64 @@
+﻿@model CleanArchitecture.Application.ViewModels.PersonViewModel
+
+@{
+    ViewData["Title"] = "Edit";
+}
+
+<h1>Edit</h1>
+
+<h4>Person</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Edit">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <input type="hidden" asp-for="@Model.Person.Id" />
+            <div class="form-group">
+                <label asp-for="@Model.Person.FirstNameGeorgian" class="control-label"></label>
+                <input asp-for="@Model.Person.FirstNameGeorgian" class="form-control" />
+                <span asp-validation-for="@Model.Person.FirstNameGeorgian" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="@Model.Person.FirstNameLatin" class="control-label"></label>
+                <input asp-for="@Model.Person.FirstNameLatin" class="form-control" />
+                <span asp-validation-for="@Model.Person.FirstNameLatin" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="@Model.Person.SecondNameGeorgian" class="control-label"></label>
+                <input asp-for="@Model.Person.SecondNameGeorgian" class="form-control" />
+                <span asp-validation-for="@Model.Person.SecondNameGeorgian" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="@Model.Person.SecondNameLatin" class="control-label"></label>
+                <input asp-for="@Model.Person.SecondNameLatin" class="form-control" />
+                <span asp-validation-for="@Model.Person.SecondNameLatin" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="@Model.Person.IdentityNumber" class="control-label"></label>
+                <input asp-for="@Model.Person.IdentityNumber" class="form-control" />
+                <span asp-validation-for="@Model.Person.IdentityNumber" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="@Model.Person.BornDate" class="control-label"></label>
+                <input asp-for="@Model.Person.BornDate" class="form-control" />
+                <span asp-validation-for="@Model.Person.BornDate" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="@Model.Person.Address" class="control-label"></label>
+                <input asp-for="@Model.Person.Address" class="form-control" />
+                <span asp-validation-for="@Model.Person.Address" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Save" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}
